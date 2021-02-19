@@ -20,7 +20,16 @@
  * @return {Node}
  */
 var connect = function(root) {
-    
+  if (!root) return null
+  connectTwo(root.left, root.right)
+  return root
 };
+let connectTwo = function (left, right) {
+  if (!left || !right) return
+  left.next = right
+  connectTwo(left.left, left.right)
+  connectTwo(left.right, right.left)
+  connectTwo(right.left, right.right)
+}
 // @lc code=end
 
