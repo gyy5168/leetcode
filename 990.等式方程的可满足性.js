@@ -10,13 +10,28 @@
  * @return {boolean}
  */
 var equationsPossible = function(equations) {
+  // let uf = new UnionFind(26)
+  // equations.sort((a, b) => b[1] === '=' ? 1 : -1)
+  // for (let i = 0; i < equations.length; i++) {
+  //   const equation = equations[i]
+  //   if (equation[1] === '=') {
+  //     uf.union(equation[0].charCodeAt() - 97, equation[3].charCodeAt() - 97)
+  //   } else {
+  //     if (uf.isConnected(equation[0].charCodeAt() - 97, equation[3].charCodeAt() - 97)) return false
+  //   }
+  // }
+  // return true
+
   let uf = new UnionFind(26)
-  equations.sort((a, b) => b[1] === '=' ? 1 : -1)
   for (let i = 0; i < equations.length; i++) {
     const equation = equations[i]
     if (equation[1] === '=') {
       uf.union(equation[0].charCodeAt() - 97, equation[3].charCodeAt() - 97)
-    } else {
+    }
+  }
+  for (let i = 0; i < equations.length; i++) {
+    const equation = equations[i]
+    if (equation[1] === '!') {
       if (uf.isConnected(equation[0].charCodeAt() - 97, equation[3].charCodeAt() - 97)) return false
     }
   }
