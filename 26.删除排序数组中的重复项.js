@@ -20,16 +20,28 @@ var removeDuplicates = function(nums) {
   //   }
   // }
   // return nums.length
+
+  // if (nums.length === 0) return 0
+  // var len = 1
+  // for (let i = 1; i < nums.length; i++) {
+  //   if (nums[i] !== nums[i - 1]) {
+  //     nums[len] = nums[i]
+  //     len++
+  //   }
+  // }
+  // return len
+
   if (nums.length === 0) return 0
-  var len = 1
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] !== nums[i - 1]) {
-      nums[len] = nums[i]
-      len++
+  let slow = 0
+  let fast = 0
+  while(fast < nums.length) {
+    if (nums[fast] !== nums[slow]) {
+      slow++
+      nums[slow] = nums[fast]
     }
-    
+    fast++
   }
-  return len
+  return slow + 1
 };
 // @lc code=end
 
