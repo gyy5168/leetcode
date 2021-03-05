@@ -31,11 +31,9 @@ var maxEnvelopes = function(envelopes) {
       let left = 0
       let right = piles
       while (left < right) {
-          let mid = (left + right) / 2 >> 0
-          if (top[mid] >= poker)
-              right = mid
-          else
-              left = mid + 1
+        let mid = (left + right) >> 1
+        if (top[mid] >= poker) right = mid
+        else left = mid + 1
       }
       if (left === piles) piles++
       // 把这张牌放到牌堆顶
