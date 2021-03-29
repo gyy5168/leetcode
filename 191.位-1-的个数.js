@@ -10,7 +10,13 @@
  * @return {number}
  */
 var hammingWeight = function(n) {
-    return n.toString(2).replace(/0/g, '').length
+    // return n.toString(2).replace(/0/g, '').length
+    let res = 0
+    while(n) {
+        n = n & (n -1)
+        res++
+    }
+    return res
 };
 // @lc code=end
 
