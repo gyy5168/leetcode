@@ -14,17 +14,17 @@ var lengthOfLongestSubstring = function(s) {
   
   let left = 0
   let right = 0
-  let window = new Map()
+  let floatWindow = new Map()
   
   while(right < s.length) {
     let char = s[right]
     
-    window.set(char, window.get(char) ? window.get(char) + 1 : 1)
+    floatWindow.set(char, floatWindow.get(char) ? floatWindow.get(char) + 1 : 1)
 
-    while(window.get(char) > 1) {
+    while(floatWindow.get(char) > 1) {
       let first = s[left]
       left++
-      window.set(first, window.get(first) - 1)
+      floatWindow.set(first, floatWindow.get(first) - 1)
     }
 
     if (right - left + 1 > res) res = right - left + 1 

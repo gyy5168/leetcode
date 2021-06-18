@@ -24,11 +24,9 @@ var serialize = function(root) {
   let tmp = [root]
   while (tmp.length) {
     const tmpNext = []
-    let hasNext = false
     while (tmp.length) {
       const node = tmp.shift()
       if (node) {
-        hasNext = true
         res.push(node.val)
         tmpNext.push(node.left)
         tmpNext.push(node.right)
@@ -36,7 +34,7 @@ var serialize = function(root) {
         res.push(null)
       }
     }
-    if (hasNext) tmp = tmpNext
+    tmp = tmpNext
   }
   while (res[res.length - 1] === null) res.splice(-1)
   return JSON.stringify(res)
